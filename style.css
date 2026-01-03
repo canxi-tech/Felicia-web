@@ -14,7 +14,7 @@ body {
 
     justify-content: center;
 
-    background: url('https://images.unsplash.com/photo-1518531933037-91b2f5f229cc?q=80&w=1920') no-repeat center center/cover;
+    background: url('nen-lacay.webp') no-repeat center center/cover;
 
     overflow: hidden;
 
@@ -221,4 +221,5 @@ body {
     .split-container { flex-direction: column; }
     .button-grid { justify-content: center; }
     .step-image-box { height: 300px; } /* Giảm chiều cao trên điện thoại cho đỡ dài */
+
 }
