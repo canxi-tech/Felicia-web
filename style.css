@@ -1,0 +1,224 @@
+/* --- 1. CÀI ĐẶT CHUNG --- */
+
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+
+
+
+body {
+
+    height: 100vh;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    background: url('https://images.unsplash.com/photo-1518531933037-91b2f5f229cc?q=80&w=1920') no-repeat center center/cover;
+
+    overflow: hidden;
+
+}
+
+
+
+.background-overlay {
+
+    position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+
+    background: rgba(0, 0, 0, 0.5); z-index: 1;
+
+}
+
+
+
+.container { 
+
+    position: relative; 
+
+    z-index: 2; 
+
+    width: 95%; 
+
+    max-width: 1500px; 
+
+}
+
+
+
+/* --- 2. KHUNG KÍNH CHUNG --- */
+
+.main-card {
+
+    background: rgba(255, 255, 255, 0.1);
+
+    backdrop-filter: blur(20px);
+
+    -webkit-backdrop-filter: blur(20px);
+
+    border: 1px solid rgba(255, 255, 255, 0.2);
+
+    border-radius: 25px;
+
+    padding: 40px;
+
+    color: white;
+
+    width: 100%;
+
+    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.6);
+
+}
+
+
+
+/* --- 3. TRANG CHỦ (INDEX.HTML) --- */
+
+.home-card {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+}
+
+
+
+.content-left { flex: 1; }
+
+.content-right { flex: 1; display: flex; justify-content: center; }
+
+
+
+.brand-name { font-size: 3.5rem; color: #51FF00; margin-bottom: 20px; text-transform: uppercase; }
+
+
+
+/* Nút bấm 2 hàng dọc */
+
+.button-grid { 
+
+    display: grid; 
+
+    grid-template-columns: repeat(2, 160px); 
+
+    gap: 12px; 
+
+    margin-top: 25px; 
+
+}
+
+
+
+.btn {
+
+    text-decoration: none; color: white; padding: 12px; border-radius: 8px;
+
+    font-weight: bold; font-size: 13px; text-align: center; transition: 0.3s;
+
+}
+
+.btn-primary { background: #00a8ff; }
+
+.btn-facebook { background: #1877F2; }
+
+.btn-discord { background: #5865F2; }
+
+.btn-tiktok { background: #000000; border: 1px solid #fff; }
+
+.btn-earth { background: #2ecc71; }
+
+.btn:hover { transform: translateY(-5px); filter: brightness(1.2); }
+
+
+
+.main-logo { width: 100%; max-width: 450px; animation: logoFloat 3s ease-in-out infinite; }
+
+@keyframes logoFloat { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-20px); } }
+
+
+
+/* --- 4. TRANG CÁCH VÀO (CACH-VAO.HTML) --- */
+.tutorial-card {
+    display: block; 
+    text-align: center;
+}
+
+.btn-back { 
+    color: #51FF00; text-decoration: none; font-weight: bold; 
+    display: inline-block; text-align: left; margin-bottom: 20px; 
+    transition: 0.3s;
+}
+.btn-back:hover { opacity: 0.8; transform: translateX(-5px); }
+
+/* Container chứa 2 cột */
+.split-container { 
+    display: flex; 
+    justify-content: space-between; 
+    gap: 30px; 
+    width: 100%; 
+}
+
+.platform-col { 
+    flex: 1; 
+    background: rgba(0, 0, 0, 0.6); 
+    padding: 25px; /* Giảm padding một chút để không gian ảnh rộng hơn */
+    border-radius: 20px; 
+    border: 2px solid rgba(81, 255, 0, 0.3);
+    text-align: left;
+    display: flex;
+    flex-direction: column; /* Đảm bảo các phần tử xếp dọc đẹp mắt */
+}
+
+/* PHẦN CHỨA ẢNH - CHỈNH LẠI ĐỂ KHÍT KHƯƠNG */
+.step-image-box { 
+    width: 100%; 
+    height: 450px; /* Cố định chiều cao */
+    margin: 20px 0;
+    background: #000;
+    border-radius: 12px;
+    border: 1px solid rgba(81, 255, 0, 0.5);
+    overflow: hidden; /* Cắt phần ảnh thừa */
+    position: relative;
+}
+
+.guide-img { 
+    width: 100%; 
+    height: 100%; /* Ép chiều cao ảnh bằng khung */
+    display: block;
+    object-fit: cover; /* QUAN TRỌNG: Giúp ảnh lấp đầy khung, tự cắt bỏ phần thừa */
+    object-position: center; /* Giữ tâm ảnh ở giữa */
+    transition: 0.5s ease;
+}
+
+/* Hiệu ứng zoom nhẹ khi di chuột vào cột */
+.platform-col:hover .guide-img {
+    transform: scale(1.05);
+}
+
+.platform-header { display: flex; align-items: center; gap: 15px; margin-bottom: 15px; }
+.platform-header i { font-size: 2rem; color: #51FF00; }
+.platform-header h3 { font-size: 1.5rem; }
+
+.step-mini { 
+    display: flex; 
+    align-items: center; 
+    gap: 12px; 
+    margin-top: 10px; 
+    background: rgba(255,255,255,0.06); 
+    padding: 12px; 
+    border-radius: 8px;
+    border-left: 3px solid #51FF00; /* Thêm điểm nhấn cho các bước */
+}
+
+.step-mini b { color: #51FF00; }
+
+/* --- 5. MOBILE --- */
+@media (max-width: 1100px) {
+    .home-card { flex-direction: column; text-align: center; }
+    .split-container { flex-direction: column; }
+    .button-grid { justify-content: center; }
+    .step-image-box { height: 300px; } /* Giảm chiều cao trên điện thoại cho đỡ dài */
+}
