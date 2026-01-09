@@ -1,0 +1,226 @@
+/* --- 1. CÀI ĐẶT CHUNG --- */
+
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+
+
+
+body {
+    /* Đổi height thành min-height để trang có thể dài ra khi nội dung nhiều */
+    min-height: 100vh; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: url('nen-lacay.webp') no-repeat center center/cover;
+    background-attachment: fixed; /* Giữ nền cố định cho chuyên nghiệp */
+    
+    /* XÓA overflow: hidden; THAY BẰNG 2 DÒNG DƯỚI: */
+    overflow-x: hidden;
+    overflow-y: auto; 
+}
+
+
+
+.background-overlay {
+    position: fixed; /* Dùng fixed để luôn phủ kín màn hình */
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.5); 
+    z-index: -1; /* Đẩy xuống dưới cùng để không chặn thao tác vuốt */
+    pointer-events: none; /* Quan trọng: Giúp ngón tay vuốt xuyên qua lớp này */
+}
+
+
+
+.container { 
+
+    position: relative; 
+
+    z-index: 2; 
+
+    width: 95%; 
+
+    max-width: 1500px; 
+
+}
+
+
+
+/* --- 2. KHUNG KÍNH CHUNG --- */
+
+.main-card {
+
+    background: rgba(255, 255, 255, 0.1);
+
+    backdrop-filter: blur(20px);
+
+    -webkit-backdrop-filter: blur(20px);
+
+    border: 1px solid rgba(255, 255, 255, 0.2);
+
+    border-radius: 25px;
+
+    padding: 40px;
+
+    color: white;
+
+    width: 100%;
+
+    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.6);
+
+}
+
+
+
+/* --- 3. TRANG CHỦ (INDEX.HTML) --- */
+
+.home-card {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+}
+
+
+
+.content-left { flex: 1; }
+
+.content-right { flex: 1; display: flex; justify-content: center; }
+
+
+
+.brand-name { font-size: 3.5rem; color: #51FF00; margin-bottom: 20px; text-transform: uppercase; }
+
+
+
+/* Nút bấm 2 hàng dọc */
+
+.button-grid { 
+
+    display: grid; 
+
+    grid-template-columns: repeat(2, 160px); 
+
+    gap: 12px; 
+
+    margin-top: 25px; 
+
+}
+
+
+
+.btn {
+
+    text-decoration: none; color: white; padding: 12px; border-radius: 8px;
+
+    font-weight: bold; font-size: 13px; text-align: center; transition: 0.3s;
+
+}
+
+.btn-primary { background: #00a8ff; }
+
+.btn-facebook { background: #1877F2; }
+
+.btn-discord { background: #5865F2; }
+
+.btn-tiktok { background: #000000; border: 1px solid #fff; }
+
+.btn-earth { background: #2ecc71; }
+
+.btn:hover { transform: translateY(-5px); filter: brightness(1.2); }
+
+
+
+.main-logo { width: 100%; max-width: 450px; animation: logoFloat 3s ease-in-out infinite; }
+
+@keyframes logoFloat { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-20px); } }
+
+
+/* --- 4. TRANG CÁCH VÀO (ĐÃ FIX ẨN HIỆN) --- */
+.tutorial-card {
+    display: block; 
+    text-align: center;
+}
+
+/* Nút chuyển đổi Tab */
+.tab-container {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    margin-bottom: 30px;
+}
+
+.tab-btn {
+    padding: 12px 30px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 2px solid #51FF00;
+    color: white;
+    border-radius: 12px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.tab-btn.active {
+    background: #51FF00;
+    color: black;
+    box-shadow: 0 0 20px rgba(81, 255, 0, 0.4);
+}
+
+/* Lệnh ẩn hiện Tab */
+.tab-panel { 
+    display: none; /* Mặc định ẩn sạch */
+}
+
+.tab-panel.active { 
+    display: block !important; /* Chỉ hiện cái active */
+    animation: fadeIn 0.4s ease;
+}
+
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+/* Khung chứa nội dung (Ảnh to ngang) */
+.platform-col { 
+    width: 100%;
+    max-width: 1000px; /* Độ rộng ảnh cực đại */
+    margin: 0 auto;
+    background: rgba(0, 0, 0, 0.6); 
+    padding: 25px;
+    border-radius: 20px; 
+    border: 2px solid rgba(81, 255, 0, 0.3);
+}
+
+.step-image-box { 
+    width: 100%; 
+    height: auto; /* Để height auto để ảnh bung theo chiều ngang */
+    min-height: 300px;
+    margin: 20px 0;
+    background: #000;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.guide-img { 
+    width: 100%; 
+    height: auto;
+    display: block;
+    object-fit: contain; /* Giữ nguyên tỉ lệ ảnh chụp màn hình */
+}
+
+.step-mini { 
+    color: #51FF00;
+    font-size: 1.5rem;
+    background: rgba(255,255,255,0.06); 
+    padding: 15px; 
+    border-radius: 8px;
+    border-left: 5px solid #51FF00;
+    text-align: center;
+}
+
+/* --- 5. MOBILE --- */
+@media (max-width: 1100px) {
+    body { align-items: flex-start; }
+    .container { padding: 20px 0; }
+    .tab-btn { flex: 1; padding: 10px; font-size: 0.9rem; }
+}
