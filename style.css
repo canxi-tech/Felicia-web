@@ -137,95 +137,90 @@ body {
 @keyframes logoFloat { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-20px); } }
 
 
-
-/* --- 4. TRANG CÁCH VÀO (CACH-VAO.HTML) --- */
+/* --- 4. TRANG CÁCH VÀO (ĐÃ FIX ẨN HIỆN) --- */
 .tutorial-card {
     display: block; 
     text-align: center;
 }
 
-.btn-back { 
-    color: #51FF00; text-decoration: none; font-weight: bold; 
-    display: inline-block; text-align: left; margin-bottom: 20px; 
+/* Nút chuyển đổi Tab */
+.tab-container {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    margin-bottom: 30px;
+}
+
+.tab-btn {
+    padding: 12px 30px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 2px solid #51FF00;
+    color: white;
+    border-radius: 12px;
+    cursor: pointer;
+    font-weight: bold;
     transition: 0.3s;
 }
-.btn-back:hover { opacity: 0.8; transform: translateX(-5px); }
 
-/* Container chứa 2 cột */
-.split-container { 
-    display: flex; 
-    justify-content: space-between; 
-    gap: 30px; 
-    width: 100%; 
+.tab-btn.active {
+    background: #51FF00;
+    color: black;
+    box-shadow: 0 0 20px rgba(81, 255, 0, 0.4);
 }
 
+/* Lệnh ẩn hiện Tab */
+.tab-panel { 
+    display: none; /* Mặc định ẩn sạch */
+}
+
+.tab-panel.active { 
+    display: block !important; /* Chỉ hiện cái active */
+    animation: fadeIn 0.4s ease;
+}
+
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+/* Khung chứa nội dung (Ảnh to ngang) */
 .platform-col { 
-    flex: 1; 
+    width: 100%;
+    max-width: 1000px; /* Độ rộng ảnh cực đại */
+    margin: 0 auto;
     background: rgba(0, 0, 0, 0.6); 
-    padding: 25px; /* Giảm padding một chút để không gian ảnh rộng hơn */
+    padding: 25px;
     border-radius: 20px; 
     border: 2px solid rgba(81, 255, 0, 0.3);
-    text-align: left;
-    display: flex;
-    flex-direction: column; /* Đảm bảo các phần tử xếp dọc đẹp mắt */
 }
 
-/* PHẦN CHỨA ẢNH - CHỈNH LẠI ĐỂ KHÍT KHƯƠNG */
 .step-image-box { 
     width: 100%; 
-    height: 450px; /* Cố định chiều cao */
+    height: auto; /* Để height auto để ảnh bung theo chiều ngang */
+    min-height: 300px;
     margin: 20px 0;
     background: #000;
     border-radius: 12px;
-    border: 1px solid rgba(81, 255, 0, 0.5);
-    overflow: hidden; /* Cắt phần ảnh thừa */
-    position: relative;
+    overflow: hidden;
 }
 
 .guide-img { 
     width: 100%; 
-    height: 100%; /* Ép chiều cao ảnh bằng khung */
+    height: auto;
     display: block;
-    object-fit: cover; /* QUAN TRỌNG: Giúp ảnh lấp đầy khung, tự cắt bỏ phần thừa */
-    object-position: center; /* Giữ tâm ảnh ở giữa */
-    transition: 0.5s ease;
+    object-fit: contain; /* Giữ nguyên tỉ lệ ảnh chụp màn hình */
 }
-
-/* Hiệu ứng zoom nhẹ khi di chuột vào cột */
-.platform-col:hover .guide-img {
-    transform: scale(1.05);
-}
-
-.platform-header { display: flex; align-items: center; gap: 15px; margin-bottom: 15px; }
-.platform-header i { font-size: 2rem; color: #51FF00; }
-.platform-header h3 { font-size: 1.5rem; }
 
 .step-mini { 
-    display: flex; 
-    align-items: center; 
-    gap: 12px; 
-    margin-top: 10px; 
+    color: #51FF00;
+    font-size: 1.5rem;
     background: rgba(255,255,255,0.06); 
-    padding: 12px; 
+    padding: 15px; 
     border-radius: 8px;
-    border-left: 3px solid #51FF00; /* Thêm điểm nhấn cho các bước */
+    border-left: 5px solid #51FF00;
+    text-align: center;
 }
-
-.step-mini b { color: #51FF00; }
 
 /* --- 5. MOBILE --- */
 @media (max-width: 1100px) {
-    body {
-        /* Cho phép nội dung bắt đầu từ đỉnh màn hình để dễ vuốt xuống */
-        align-items: flex-start; 
-    }
-    .container {
-        padding-top: 30px; /* Tạo khoảng cách trên đầu cho đẹp */
-        padding-bottom: 30px; /* Tạo khoảng cách dưới cùng để không bị sát mép */
-    }
-    .home-card { flex-direction: column; text-align: center; }
-    .split-container { flex-direction: column; }
-    .button-grid { justify-content: center; }
-    .step-image-box { height: auto; aspect-ratio: 16/9; } 
-}
+    body { align-items: flex-start; }
+    .container { padding: 20px 0; }
+    .tab-btn { flex: 1; padding: 10px; font-size: 0.9rem; }
 }
