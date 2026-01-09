@@ -3,52 +3,54 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cách vào - SuperMC</title>
+    <title>Cách vào Server - Felicia MC</title>
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="icon" type="image/webp" href="favicon-felicia.webp">
 </head>
 <body>
-    <div class="background-overlay"></div>
-    <div class="container">
-        <main class="main-card tutorial-card">
-            <div class="header-back">
-                <a href="index.html" class="btn-back">⇐ Quay lại trang chủ</a>
+
+<div class="background-overlay"></div>
+
+<div class="container">
+    <div class="tutorial-card">
+        <a href="index.html" style="color: #51FF00; text-decoration: none; display: block; margin-bottom: 20px;">← Quay lại trang chủ</a>
+        
+        <div class="tab-container">
+            <button class="tab-btn active" id="btn-pc" onclick="switchTab('pc')">💻 CÁCH VÀO PC</button>
+            <button class="tab-btn" id="btn-pe" onclick="switchTab('pe')">📱 CÁCH VÀO PE</button>
+        </div>
+
+        <div class="tab-content-wrapper">
+            <div id="pc-content" class="tab-panel active">
+                <div class="step-image-box">
+                    <img src="pc-huongdan.webp" class="guide-img">
+                </div>
+                <div class="step-mini">📍 <b>Server IP:</b> mc.feliciapro.top | ⚙️ <b>Phiên bản:</b> 1.20 - 1.21</div>
             </div>
 
-            <h2 class="brand-name" style="text-align: center; width: 100%;">CÁCH THAM GIA</h2>
-
-            <div class="split-container">
-                <div class="platform-col">
-                    <div class="platform-header">
-                        <i class="fa-solid fa-desktop"></i>
-                        <h3>MÁY TÍNH (PC)</h3>
-                    </div>
-                    <div class="step-image-box">
-                        <img src="pc-huongdan.webp" alt="Ảnh PC" class="guide-img">
-                        <p class="img-caption">Ảnh minh họa Java Edition</p>
-                    </div>
-                    <div class="step-mini"><span>1</span><p>IP: <b>feliciapro.top</b></p></div>
-                    <div class="step-mini"><span>2</span><p>Version: 1.16.x - 1.21.+</p></div>
+            <div id="pe-content" class="tab-panel">
+                <div class="step-image-box">
+                    <img src="pe-huongdan.webp" class="guide-img">
                 </div>
-
-                <div class="platform-col">
-                    <div class="platform-header">
-                        <i class="fa-solid fa-mobile-screen"></i>
-                        <h3>ĐIỆN THOẠI (PE)</h3>
-                    </div>
-                    <div class="step-image-box">
-                        <img src="pe-huongdan.webp" alt="Ảnh PE" class="guide-img">
-                        <p class="img-caption">Ảnh minh họa Bedrock</p>
-                    </div>
-                    <div class="step-mini"><span>1</span><p>IP: <b>pe.feliciapro.top</b></p></div>
-                    <div class="step-mini"><span>2</span><p>Port: <b>19132</b></p></div>
-                </div>
+                <div class="step-mini">📍 <b>Server IP:</b> pe.feliciapro.top | </div>
             </div>
-        </main>
+        </div>
     </div>
+</div>
+
+<script>
+function switchTab(type) {
+    // 1. Tìm tất cả các bảng và nút để xóa trạng thái cũ
+    const panels = document.querySelectorAll('.tab-panel');
+    const buttons = document.querySelectorAll('.tab-btn');
+
+    panels.forEach(p => p.classList.remove('active'));
+    buttons.forEach(b => b.classList.remove('active'));
+
+    // 2. Kích hoạt đúng cái người dùng bấm
+    document.getElementById(type + '-content').classList.add('active');
+    document.getElementById('btn-' + type).classList.add('active');
+}
+</script>
+
 </body>
-
 </html>
-
